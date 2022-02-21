@@ -6,9 +6,9 @@ const Footer = () => {
   const sanityData = useSanity(null, 'social');
 
   return (
-    <footer className='bg-dark my-4'>
-      <div className='container mx-auto my-2 flex flex-col items-center justify-center'>
-        <ul className='mt-4 flex items-center justify-around'>
+    <footer className='bg-dark mt-4'>
+      <div className='container mx-auto flex flex-col items-center justify-center'>
+        <ul className='mt-3 flex items-center justify-around'>
           {sanityData &&
             sanityData.map((item) => (
               <span className='bg-light mx-2 rounded'>
@@ -24,7 +24,7 @@ const Footer = () => {
               </span>
             ))}
         </ul>
-        <span className='text-light my-4 text-sm'>
+        <span className='text-light my-2 text-sm'>
           Copyright © 2022 • Karthik ☄️
         </span>
       </div>
