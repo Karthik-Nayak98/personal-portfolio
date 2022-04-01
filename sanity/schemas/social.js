@@ -8,13 +8,16 @@ const social = {
       type: 'string',
     },
     {
-      name: 'social_media_url',
+      name: 'social_url',
       type: 'url',
       title: 'Social Media URL',
     },
     {
       name: 'image',
       type: 'image',
+      options: {
+        hotspot: true,
+      },
     },
   ],
 };

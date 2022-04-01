@@ -1,3 +1,5 @@
+import { string } from 'prop-types';
+
 const author = {
   name: 'author',
   type: 'document',
@@ -5,6 +7,10 @@ const author = {
   fields: [
     {
       name: 'Name',
+      type: 'string',
+    },
+    {
+      name: 'Tagline',
       type: 'string',
     },
     {
