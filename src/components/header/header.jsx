@@ -1,12 +1,10 @@
 import React from 'react';
 
-const Header = ({ title, textColor, borderColor }) => {
+const Header = ({ title }) => {
   return (
-    <div
-      className={`relative my-4 mx-44 w-fit py-2 text-4xl font-bold uppercase text-${textColor}`}>
-      <span>{title}</span>
-      <div
-        className={`border-${borderColor} absolute bottom-0 w-2/3 border-4`}></div>
+    <div className='relative w-fit px-10 pb-2 text-3xl font-bold capitalize lg:my-3 lg:mx-52 lg:px-8 lg:text-4xl'>
+      <h2 className='text-light'>{title}</h2>
+      <div className='border-accent absolute bottom-0 w-1/2 border-2'></div>
     </div>
   );
 };
