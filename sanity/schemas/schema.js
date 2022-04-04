@@ -8,6 +8,7 @@ import projects from './projects';
 import skills from './skills';
 import author from './author';
 import social from './social';
+import blog from './blog';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -21,5 +22,6 @@ export default createSchema({
     skills,
     author,
     social,
+    blog,
   ]),
 });
