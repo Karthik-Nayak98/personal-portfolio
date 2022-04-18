@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { BiSun, BiMoon } from 'react-icons/bi';
 import useSanity from '../../hooks/useSanity';
 
 function Navbar() {
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const [isDarkModeOn, setIsDarkModeOn] = useState(true);
+
   const query = `*[_type == "author"]{image{ asset->{ url, _id,}}}`;
   const authorImage = useSanity(null, query);
 
@@ -17,12 +20,15 @@ function Navbar() {
         />
       </Link>
 
-      <div className='ml-auto mr-2 rounded bg-white bg-opacity-10 p-2 md:hidden'>
-        <BiMoon className='hidden' size={'1.5rem'} />
-        <BiSun size={'1.5rem'} />
+      <div
+        onClick={() => setIsDarkModeOn(!isDarkModeOn)}
+        className='ml-auto mr-2 cursor-pointer rounded bg-white bg-opacity-10 p-2 md:hidden'>
+        <BiMoon className={`${isDarkModeOn ? 'hidden' : 'block'}`} size={20} />
+        <BiSun className={`${!isDarkModeOn ? 'hidden' : 'block'}`} size={20} />
       </div>
       <nav className=''>
         <svg
+          onClick={() => setIsNavbarOpen(!isNavbarOpen)}
           className='h-6 w-6 text-gray-900 dark:text-gray-100 md:hidden'
           width='20'
           height='20'
@@ -41,7 +47,10 @@ function Navbar() {
             strokeLinecap='round'
             strokeLinejoin='round'></path>
         </svg>
-        <ul className='fixed top-20 left-0 right-0 hidden translate-x-0 transform items-center gap-10 space-y-2 px-8 pb-4 md:visible md:relative md:top-0 md:flex md:gap-0 md:space-y-0 md:px-0 md:pb-0'>
+        <ul
+          className={`bg-dark fixed top-20 left-0 right-0 transform items-center gap-10 space-y-2 px-6 pb-4 ${
+            isNavbarOpen ? 'translate-x-0' : 'translate-x-full'
+          } md:relative md:top-0 md:flex md:translate-x-0 md:gap-0 md:space-y-0 md:px-0 md:pb-0`}>
           <li>
             <NavLink
               className={({
@@ -97,9 +106,17 @@ function Navbar() {
               Contact
             </NavLink>
           </li> */}
-          <li className='ml-2 hidden rounded bg-white bg-opacity-10 p-2 md:block'>
-            {/* <BiMoon size={'1.5rem'} /> */}
-            <BiSun size={'1.5rem'} />
+          <li
+            onClick={() => setIsDarkModeOn(!isDarkModeOn)}
+            className='ml-2 hidden cursor-pointer rounded bg-white bg-opacity-10 p-2 md:block'>
+            <BiMoon
+              className={`${isDarkModeOn ? 'hidden' : 'block'}`}
+              size={20}
+            />
+            <BiSun
+              className={`${!isDarkModeOn ? 'hidden' : 'block'}`}
+              size={20}
+            />
           </li>
         </ul>
       </nav>
