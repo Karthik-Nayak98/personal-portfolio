@@ -12,7 +12,13 @@ const skills = {
       type: 'image',
       title: 'Image',
     },
+    {
+      name: 'order',
+      title: 'Order',
+      type: 'number',
+      hidden: true,
+    },
   ],
-};
+}
 
-export default skills;
+export default skills

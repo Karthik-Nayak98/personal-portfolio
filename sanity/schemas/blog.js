@@ -1,7 +1,7 @@
 const blog = {
   name: 'blog',
-  type: 'document',
   title: 'Blog',
+  type: 'document',
   fields: [
     {
       name: 'title',
@@ -10,25 +10,73 @@ const blog = {
     },
     {
       name: 'slug',
-      type: 'slug',
       title: 'Slug',
+      type: 'slug',
       options: {
         source: 'title',
         maxLength: 96,
       },
     },
     {
-      title: 'Body',
-      name: 'body',
-      type: 'array',
-      of: [{ type: 'block' }],
+      name: 'author',
+      title: 'Author',
+      type: 'reference',
+      to: { type: 'author' },
     },
     {
-      name: 'image',
+      name: 'mainImage',
+      title: 'Main image',
       type: 'image',
-      title: 'Image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'tags',
+      type: 'array',
+      of: [
+        {
+          type: 'string',
+        },
+      ],
+      options: {
+        layout: 'tags',
+      },
+    },
+    {
+      name: 'summary',
+      type: 'string',
+      title: 'Summary',
+    },
+    {
+      name: 'publishedAt',
+      title: 'Published At',
+      type: 'date',
+      options: {
+        dateFormat: 'MMMM DD, YYYY',
+        calendarTodayLabel: 'Today',
+      },
+    },
+    {
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
     },
   ],
-};
 
-export default blog;
+  preview: {
+    select: {
+      title: 'title',
+      author: 'author.name',
+      media: 'mainImage',
+    },
+    prepare(selection) {
+      const { author } = selection
+      return Object.assign({}, selection, {
+        subtitle: author && `by ${author}`,
+      })
+    },
+  },
+}
+
+export default blog
