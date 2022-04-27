@@ -10,7 +10,6 @@ import author from './author'
 import social from './social'
 import blog from './blog'
 import blockContent from './blockContent'
-import category from './category'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -26,6 +25,5 @@ export default createSchema({
     social,
     blockContent,
     blog,
-    category,
   ]),
 })

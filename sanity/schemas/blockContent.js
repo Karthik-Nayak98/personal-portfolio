@@ -29,7 +29,7 @@ const blockContent = {
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
-            title: 'URL',
+            title: 'External Link',
             name: 'link',
             type: 'object',
             fields: [
@@ -37,6 +37,15 @@ const blockContent = {
                 title: 'URL',
                 name: 'href',
                 type: 'url',
+                validation: (Rule) =>
+                  Rule.uri({
+                    scheme: ['http', 'https', 'mailto', 'tel'],
+                  }),
+              },
+              {
+                title: 'Open in new tab',
+                name: 'blank',
+                type: 'boolean',
               },
             ],
           },

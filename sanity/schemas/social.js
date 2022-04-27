@@ -11,6 +11,10 @@ const social = {
       name: 'social_url',
       type: 'url',
       title: 'Social Media URL',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
     },
     {
       name: 'image',
@@ -20,5 +24,5 @@ const social = {
       },
     },
   ],
-};
-export default social;
+}
+export default social

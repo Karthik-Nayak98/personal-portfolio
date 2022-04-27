@@ -16,13 +16,7 @@ const author = {
     {
       name: 'bio',
       title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-        },
-      ],
+      type: 'blockContent',
     },
     {
       name: 'image',
