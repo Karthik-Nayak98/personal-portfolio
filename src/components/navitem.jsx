@@ -7,8 +7,8 @@ function NavItem({ navtext, route }) {
       <NavLink
         className={({
           isActive,
-        }) => `rounded-md py-2 px-4 capitalize text-white opacity-50 hover:bg-white hover:bg-opacity-10
-                ${isActive ? 'text-white opacity-100' : ''}
+        }) => `dark:hover:bg-light rounded-md py-2 px-4 capitalize text-gray-600 hover:bg-gray-500  hover:bg-opacity-10 dark:hover:bg-opacity-10
+                ${isActive ? 'dark:text-light font-medium text-black' : ''}
               `}
         to={`${route}`}>
         {navtext}
