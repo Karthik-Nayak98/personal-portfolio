@@ -22,7 +22,7 @@ function ViewCounter({ slug }) {
   }, [slug])
 
   return (
-    <span className='mr-2 flex items-center gap-1 text-xs text-gray-400 md:text-sm'>
+    <span className='mr-2 flex items-center gap-1 text-xs text-gray-600 dark:text-gray-400 md:text-sm'>
       <AiOutlineEye className='h-4 w-4 md:h-5 md:w-5' />
       {views ? views : '---'} views
     </span>

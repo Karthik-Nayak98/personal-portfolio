@@ -5,7 +5,8 @@ const incrementViews = async (slug) => {
   const viewRef = ref(db, `views/${slug}`)
 
   runTransaction(viewRef, (currentView) => {
-    if (currentView === null) currentView = 1
+    // Set the default view to 0
+    if (currentView === null) currentView = 0
     return currentView + 1
   })
 }
