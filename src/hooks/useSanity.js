@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react';
-import { client } from '../client';
+import { useState, useEffect } from 'react'
+import { client } from '../utils/client'
 
-const useSanity = (initialValue, name) => {
-  const [sanityData, setSanityData] = useState(initialValue);
-  const query = `*[_type == "${name}"]`;
+const useSanity = (initialValue, query, slug = '') => {
+  const [sanityData, setSanityData] = useState(initialValue)
   useEffect(() => {
     client
-      .fetch(query)
-      .then((data) => setSanityData(data))
-      .catch((err) => console.log(err));
-  }, [query]);
+      .fetch(query, { slug })
+      .then((data) => {
+        setSanityData(data)
+      })
+      .catch((err) => console.log(err))
+  }, [query, slug])
 
-  return sanityData;
-};
+  return sanityData
+}
 
-export default useSanity;
+export default useSanity
