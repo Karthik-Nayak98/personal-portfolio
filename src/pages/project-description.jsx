@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import Container from '../components/container'
 import { AiOutlineLink, AiOutlineGithub } from 'react-icons/ai'
 import BlockContent from '@sanity/block-content-to-react'
 import serializer from '../utils/serializer.js'
@@ -8,6 +7,8 @@ import { useParams } from 'react-router-dom'
 import Loader from '../components/loader'
 import { format } from 'date-fns'
 import useSanity from '../hooks/useSanity.js'
+
+import { motion } from 'framer-motion'
 
 function ProjectDescription() {
   const { project } = useParams()
@@ -29,7 +30,15 @@ function ProjectDescription() {
   if (!projectData) return <Loader />
 
   return (
-    <section className='container mx-auto my-6 max-w-4xl px-8 md:px-12 lg:px-16'>
+    <motion.section
+      initial={{ y: 200, opacity: 0 }}
+      animate={{ y: 0, opacity: 1, transition: { duration: 0.2 } }}
+      exit={{
+        y: -100,
+        opacity: 0,
+        transition: { duration: 0.3, ease: [0.33, 1, 0.68, 1] },
+      }}
+      className='container mx-auto my-6 max-w-4xl px-8 md:px-12 lg:px-16'>
       <figure className='rounded'>
         <img
           className='rounded'
@@ -80,7 +89,7 @@ function ProjectDescription() {
           />
         </div>
       </article>
-    </section>
+    </motion.section>
   )
 }
 

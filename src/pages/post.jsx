@@ -9,6 +9,8 @@ import Tag from '../components/tag.jsx'
 import Loader from '../components/loader.jsx'
 import useSanity from '../hooks/useSanity.js'
 
+import { motion } from 'framer-motion'
+
 function Post() {
   const { slug } = useParams()
 
@@ -28,7 +30,15 @@ function Post() {
   if (!postData) return <Loader />
 
   return (
-    <main className='container mx-auto max-w-4xl px-8 md:px-12 lg:px-16'>
+    <motion.main
+      initial={{ y: 200, opacity: 0 }}
+      animate={{ y: 0, opacity: 1, transition: { duration: 0.2 } }}
+      exit={{
+        y: -100,
+        opacity: 0,
+        transition: { duration: 0.3, ease: 'easeInOut' },
+      }}
+      className='container mx-auto max-w-4xl px-8 md:px-12 lg:px-16'>
       <article className='flex flex-col gap-4 rounded-md md:flex-row md:gap-12'>
         <div className='flex-1'>
           <h1 className='my-2 text-3xl font-bold md:text-4xl'>{postData.title}</h1>
@@ -62,7 +72,7 @@ function Post() {
           </div>
         </div>
       </article>
-    </main>
+    </motion.main>
   )
 }
 

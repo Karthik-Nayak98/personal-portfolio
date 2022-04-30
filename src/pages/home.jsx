@@ -5,6 +5,8 @@ import Resume from '../assets/Karthik_Nayak_Resume.pdf'
 import Loader from '../components/loader'
 import SocialIcon from '../components/social-icon'
 
+import { motion } from 'framer-motion'
+
 const Home = () => {
   const query1 = '*[_type == "author"][0]{name, title, image{asset ->{url, _id}}}'
   const query2 = '*[_type == "social"]'
@@ -14,7 +16,15 @@ const Home = () => {
   if (!sanityData || !socialData) return <Loader />
 
   return (
-    <div className='dark:bg-dark container mx-auto max-w-4xl bg-gray-200 py-4 px-2 md:px-24 md:py-14 lg:px-16'>
+    <motion.div
+      initial={{ x: -200, opacity: 0 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{
+        y: -100,
+        opacity: 0,
+        transition: { duration: 0.3, ease: [0.33, 1, 0.68, 1] },
+      }}
+      className='dark:bg-dark container mx-auto max-w-4xl bg-gray-200 py-4 px-2 md:px-24 md:py-14 lg:px-16'>
       <section className='text-dark dark:text-light flex flex-col items-center justify-center gap-5 md:flex-row md:justify-around md:gap-12 lg:justify-between lg:gap-14'>
         <section className='w-9/12 md:w-3/5'>
           <article className='flex flex-col items-center justify-center md:items-start'>
@@ -29,13 +39,14 @@ const Home = () => {
             </h2>
           </article>
           <article className='my-4 flex flex-col justify-start gap-5 md:my-8 md:flex-row md:items-center lg:gap-10'>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.1 }}
               href={Resume}
               target='_blank'
               className='border-darkAccent dark:border-accent text-darkAccent dark:text-accent self-center rounded-full border-[2px] px-4 py-1 text-center text-xs capitalize tracking-wide sm:text-sm md:border-2 md:px-6 md:py-2 md:tracking-widest lg:w-28'
               rel='noopener noreferrer'>
               Resume
-            </a>
+            </motion.a>
             <ul className='inline-flex items-center justify-center gap-3 md:justify-start'>
               {socialData.map((item) => (
                 <SocialIcon
@@ -56,7 +67,7 @@ const Home = () => {
           />
         </figure>
       </section>
-    </div>
+    </motion.div>
   )
 }
 
