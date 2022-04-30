@@ -6,7 +6,6 @@ import Home from './pages/home'
 import Blog from './pages/blog'
 import About from './pages/about'
 import Work from './pages/work'
-import Contact from './pages/contact'
 import Post from './pages/post'
 import Error from './pages/error'
 import ProjectDescription from './pages/project-description'
@@ -27,7 +26,6 @@ function App() {
             <Route path='/blog/:slug' element={<Post />} />
             <Route path='/work' element={<Work />} />
             <Route path='/work/:project' element={<ProjectDescription />} />
-            <Route path='/contact' element={<Contact />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<Error />} />
           </Routes>
