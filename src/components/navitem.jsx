@@ -1,9 +1,20 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 function NavItem({ navtext, route }) {
+  const linkVariant = {
+    open: {
+      opacity: 1,
+      y: 0,
+    },
+    close: {
+      y: -10,
+      opacity: 0,
+    },
+  }
   return (
-    <li>
+    <motion.li variants={linkVariant}>
       <NavLink
         className={({
           isActive,
@@ -13,7 +24,7 @@ function NavItem({ navtext, route }) {
         to={`${route}`}>
         {navtext}
       </NavLink>
-    </li>
+    </motion.li>
   )
 }
 
