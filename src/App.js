@@ -18,7 +18,7 @@ function App() {
   return (
     <ThemeProvider>
       <main className='font-inter dark:bg-dark text-dark dark:text-light min-h-screen bg-gray-200 pb-12'>
-        <Navbar />
+        <Navbar path={location} />
         <AnimatePresence exitBeforeEnter>
           <Routes location={location} key={location.pathname}>
             <Route path='/' element={<Home />} />

@@ -7,7 +7,8 @@ import { ThemeContext } from '../context/theme-context'
 
 import { motion } from 'framer-motion'
 
-function Navbar() {
+function Navbar({ path }) {
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false)
   const navVariants = {
     open: {
       transition: {
@@ -34,6 +35,10 @@ function Navbar() {
   }
 
   useEffect(() => {
+    if (window.innerWidth <= 768) setIsNavbarOpen(false)
+  }, [path])
+
+  useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) setIsNavbarOpen(true)
       else setIsNavbarOpen(false)
@@ -44,8 +49,6 @@ function Navbar() {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
-
-  const [isNavbarOpen, setIsNavbarOpen] = useState(false)
 
   const navItems = [
     { name: 'home', route: '/' },
@@ -75,7 +78,7 @@ function Navbar() {
 
       <div
         onClick={toggleTheme}
-        className='ml-auto cursor-pointer rounded bg-gray-200 p-2 dark:bg-white dark:bg-opacity-10 md:hidden'>
+        className='ml-auto mr-1 cursor-pointer rounded bg-gray-200 p-2 dark:bg-white dark:bg-opacity-10 md:hidden'>
         <BiMoon className={`${theme === 'dark' ? 'hidden' : 'block'}`} size={20} />
         <BiSun className={`${theme === 'light' ? 'hidden' : 'block'}`} size={20} />
       </div>
@@ -126,7 +129,7 @@ function Navbar() {
           initial={false}
           animate={isNavbarOpen ? 'open' : 'close'}
           variants={navVariants}
-          className={`dark:bg-dark fixed top-20 left-0 right-0 transform items-center gap-10 space-y-2 bg-gray-200 px-6 pb-4 ${
+          className={`dark:bg-dark fixed top-20 left-0 right-0 transform items-center gap-14 space-y-2 bg-gray-200 px-6 pb-4 ${
             isNavbarOpen ? 'block' : 'hidden'
           } md:relative md:top-0 md:flex md:gap-0 md:space-y-0 md:px-0 md:pb-0`}>
           {navItems.map((item) => (
