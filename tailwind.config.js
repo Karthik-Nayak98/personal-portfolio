@@ -25,7 +25,6 @@ module.exports = {
         light: '#EAEAEA',
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       },
     },

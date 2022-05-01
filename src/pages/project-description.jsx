@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { AiOutlineLink, AiOutlineGithub } from 'react-icons/ai'
 import BlockContent from '@sanity/block-content-to-react'
 import serializer from '../utils/serializer.js'
