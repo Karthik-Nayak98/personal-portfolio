@@ -66,7 +66,7 @@ function Post() {
             />
           </div>
           <div className='mt-8 flex flex-wrap gap-2 text-xs'>
-            {postData.tags.map((tag) => (
+            {postData?.tags.map((tag) => (
               <Tag key={tag} value={tag} />
             ))}
           </div>

@@ -8,8 +8,9 @@ import SocialIcon from '../components/social-icon'
 import { motion } from 'framer-motion'
 
 const Home = () => {
-  const query1 = '*[_type == "author"][0]{name, title, image{asset ->{url, _id}}}'
-  const query2 = '*[_type == "social"]'
+  const query1 = '*[_type == "author"][0]{name, title, image {asset ->{url}}}'
+  const query2 = '*[_type == "social"]{name, social_url, image {asset->{ url }}}'
+
   const sanityData = useSanity(null, query1)
   const socialData = useSanity(null, query2)
 
@@ -53,7 +54,7 @@ const Home = () => {
                   key={item.name}
                   name={item.name}
                   url={item.social_url}
-                  icon={item.image}
+                  icon={item.image.asset.url}
                 />
               ))}
             </ul>
