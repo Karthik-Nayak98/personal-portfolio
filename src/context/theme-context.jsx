@@ -20,6 +20,7 @@ export const ThemeProvider = ({ initialTheme, children }) => {
   const [theme, setTheme] = useState(getInitialTheme)
 
   const rawSetTheme = (theme) => {
+    // Root element of the document (html tag)
     const root = window.document.documentElement
 
     const isDark = theme === 'dark'
