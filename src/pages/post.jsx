@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { client, urlFor } from '../utils/client.js'
 import { format } from 'date-fns'
 import BlockContent from '@sanity/block-content-to-react'
@@ -8,11 +8,16 @@ import ViewCounter from '../components/viewcounter.jsx'
 import Tag from '../components/tag.jsx'
 import Loader from '../components/loader.jsx'
 import useSanity from '../hooks/useSanity.js'
+import useTitle from '../hooks/useTitle.js'
 
 import { motion } from 'framer-motion'
 
 function Post() {
   const { slug } = useParams()
+  const location = useLocation()
+
+  const title = `${location.state.title} - Karthik Nayak`
+  useTitle(title)
 
   const query = `*[slug.current == $slug][0]{
                     title,

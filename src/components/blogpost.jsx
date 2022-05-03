@@ -14,8 +14,9 @@ function BlogPost({ slug, tags, title, summary }) {
       setViews(snapshot.val())
     })
   })
+
   return (
-    <Link to={`/blog/${slug}`}>
+    <Link to={`/blog/${slug}`} state={{ title: title }}>
       <article className='flex flex-col gap-4 rounded-md md:flex-row md:gap-12'>
         <div className='flex-1'>
           <div className='flex flex-col justify-between sm:flex-row sm:items-center'>

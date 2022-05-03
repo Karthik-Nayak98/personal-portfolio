@@ -2,12 +2,15 @@ import React from 'react'
 import Container from '../components/container'
 import Loader from '../components/loader'
 import Project from '../components/project'
+import useTitle from '../hooks/useTitle'
 import useSanity from '../hooks/useSanity'
 
 const Work = () => {
   const query = '*[_type == "project"]{title,slug,summary,banner{asset->{ url }}}'
-
   const projects = useSanity(null, query)
+
+  const title = 'Projects - Karthik Nayak'
+  useTitle(title)
 
   if (!projects) return <Loader />
 

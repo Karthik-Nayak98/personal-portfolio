@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AiOutlineLink, AiOutlineGithub } from 'react-icons/ai'
 import BlockContent from '@sanity/block-content-to-react'
 import serializer from '../utils/serializer.js'
@@ -7,11 +7,15 @@ import { useParams } from 'react-router-dom'
 import Loader from '../components/loader'
 import { format } from 'date-fns'
 import useSanity from '../hooks/useSanity.js'
+import useTitle from '../hooks/useTitle.js'
 
 import { motion } from 'framer-motion'
 
 function ProjectDescription() {
   const { project } = useParams()
+
+  const title = `${project} - Karthik Nayak`
+  useTitle(title)
 
   const query = `*[slug.current == $slug][0]{
                   title,

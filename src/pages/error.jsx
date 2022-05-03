@@ -1,9 +1,13 @@
 import React from 'react'
 import { FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import useTitle from '../hooks/useTitle'
 import Container from '../components/container'
 
 function Error() {
+  const title = '404 - Karthik Nayak'
+  useTitle(title)
+
   return (
     <Container title='Error 404'>
       <section className='px-8 md:px-12 lg:px-16'>

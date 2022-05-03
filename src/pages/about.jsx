@@ -1,16 +1,21 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 import useSanity from '../hooks/useSanity'
 import { client } from '../utils/client'
 import Container from '../components/container'
 import Loader from '../components/loader'
 import serializer from '../utils/serializer'
+import useTitle from '../hooks/useTitle'
 
 const TechStack = lazy(() => import('./tech-stack'))
 
 const About = () => {
   const query = '*[_type == "author"][0]{bio}'
   const userBio = useSanity(null, query)
+
+  const title = 'About - Karthik Nayak'
+
+  useTitle(title)
 
   if (!userBio) return <Loader />
 

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { urlFor } from '../utils/client'
 import useSanity from '../hooks/useSanity'
 import Resume from '../assets/Karthik_Nayak_Resume.pdf'
 import Loader from '../components/loader'
 import SocialIcon from '../components/social-icon'
+import useTitle from '../hooks/useTitle'
 
 import { motion } from 'framer-motion'
 
@@ -13,6 +14,9 @@ const Home = () => {
 
   const sanityData = useSanity(null, query1)
   const socialData = useSanity(null, query2)
+
+  const title = 'Karthik Nayak - FrontEnd Developer'
+  useTitle(title)
 
   if (!sanityData || !socialData) return <Loader />
 
