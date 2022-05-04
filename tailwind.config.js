@@ -19,8 +19,7 @@ module.exports = {
         'spin-slow': 'rotation 1s ease-in-out infinite',
       },
       colors: {
-        darkAccent: '#818CF8',
-        accent: '#A3A3FF',
+        accent: '#4D96FF',
         dark: '#17171F',
         light: '#EAEAEA',
       },
