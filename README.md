@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A brief description of what this project does and who it's for
 
-## Available Scripts
+![GitHub deployments](https://img.shields.io/github/deployments/karthik-nayak98/personal-portfolio/production?label=vercel&logo=vercel&logoColor=white)
+[![GitHub license](https://img.shields.io/github/license/Karthik-Nayak98/personal-portfolio)](https://github.com/Karthik-Nayak98/personal-portfolio/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/Karthik-Nayak98/personal-portfolio)](https://github.com/Karthik-Nayak98/personal-portfolio/stargazers)
 
-In the project directory, you can run:
+## ⚙️ Tech Stack
 
-### `npm start`
+- **Library**: [ReactJS](https://reactjs.org/docs/getting-started.html)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/docs/installation)
+- **Content:** [Sanity](https://www.sanity.io/docs)
+- **Database:** [Firebase](https://firebase.google.com/docs/database)
+- **Animation:** [Framer motion](https://www.framer.com/docs/)
+- **Deployment:** [Vercel](https://vercel.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Installation & Setup
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Install sanity
 
-### `npm test`
+```
+npm i @sanity/cli
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Project Setup
 
-### `npm run build`
+```
+$ git clone https://github.com/Karthik-Nayak98/personal-portfolio.git
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+$ cd personal-portfolio
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+$ npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+$ sanity init
 
-### `npm run eject`
+$ cd <sanity-directory>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+$ sanity start
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+$ npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Environment Variables
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To run this project, you will need to add the following environment variables to your
+.env file
 
-## Learn More
+`REACT_APP_SANITY_PROJECT_ID` = `<Sanity Project Id>` <br> `REACT_APP_SANITY_TOKEN` =
+`<Sanity token>`<br> `REACT_APP_SANITY_PROJECT_ID` = `<Sanity Project-Id>`<br>
+`REACT_APP_SANITY_TOKEN` = `<Sanity Token>` <br> `REACT_APP_API_KEY` =
+`<Firebase API Key>`<br> `REACT_APP_AUTH_DOMAIN` = `<Firebase Auth domain>`<br>
+`REACT_APP_DATABASE_URL` = `<Firebase Database URL>` <br>`REACT_APP_PROJECT_ID` =
+`<Firebase Project Id>`<br> `REACT_APP_STORAGE_BUCKET` =
+`<Firebase Storage Bucket>`<br> `REACT_APP_MESSAGING_SENDER_ID`
+=`<Firebase Messaging sender Id>` <br>`REACT_APP_APP_ID` = `<Firebase App Id>`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Color Reference
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Color    | Hex                                                               |
+| -------- | ----------------------------------------------------------------- |
+| accent   | ![#4D96FF](https://via.placeholder.com/10/4D96FF?text=+) #4D96FF  |
+| light    | ![#EAEAEA](https://via.placeholder.com/10/EAEAEA?text=+) #EAEAEA  |
+| dark     | ![#17171F](https://via.placeholder.com/10/17171F?text=+) #17171F  |
+| black    | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000  |
+| gray-100 | ![#F4F4F5](https://via.placeholder.com/10/F4F4F5?text=+) #F4F4F5  |
+| gray-200 | ![#E4E4E7 ](https://via.placeholder.com/10/E4E4E7?text=+) #E4E4E7 |
+| gray-400 | ![#A1A1AA ](https://via.placeholder.com/10/A1A1AA?text=+) #A1A1AA |
+| gray-500 | ![#71717A](https://via.placeholder.com/10/71717A?text=+) #71717A  |
+| gray-600 | ![#52525B](https://via.placeholder.com/10/52525B?text=+) #52525B  |
+| gray-900 | ![#18181B](https://via.placeholder.com/10/18181B?text=+) #18181B  |
 
-### Code Splitting
+## 📝 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Copyright © 2022 [Karthik Nayak]().<br /> This project is
+[MIT](https://github.com/Karthik-Nayak98/personal-portfolio/blob/main/LICENSE)
+licensed.
 
-### Analyzing the Bundle Size
+## Features to mind
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Add minimum time to read the blog post
+- Contact page
+- Add sound on toggle theme.
+- Staggered animation for projects
