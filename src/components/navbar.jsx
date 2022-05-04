@@ -4,6 +4,8 @@ import { BiSun, BiMoon } from 'react-icons/bi'
 import useSanity from '../hooks/useSanity'
 import NavItem from './navitem'
 import { ThemeContext } from '../context/theme-context'
+import DarkModeSound from '../assets/dark_mode_sound_on.mp3'
+import LightModeSound from '../assets/light_mode_sound_on.mp3'
 
 import { motion } from 'framer-motion'
 
@@ -59,8 +61,15 @@ function Navbar({ path }) {
   const { theme, setTheme } = useContext(ThemeContext)
 
   const toggleTheme = () => {
-    if (theme === 'dark') setTheme('light')
-    else setTheme('dark')
+    if (theme === 'dark') {
+      const audio = new Audio(DarkModeSound)
+      audio.play()
+      setTheme('light')
+    } else {
+      const audio = new Audio(LightModeSound)
+      audio.play()
+      setTheme('dark')
+    }
   }
 
   const query = `*[_type == "author"]{image{ asset->{ url, _id,}}}`
