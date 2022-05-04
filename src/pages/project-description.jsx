@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { AiOutlineLink, AiOutlineGithub } from 'react-icons/ai'
 import BlockContent from '@sanity/block-content-to-react'
 import serializer from '../utils/serializer.js'
@@ -14,7 +14,9 @@ import { motion } from 'framer-motion'
 function ProjectDescription() {
   const { project } = useParams()
 
-  const title = `${project} - Karthik Nayak`
+  // Capitalize first letter of the project title.
+  const updatedProject = project.charAt(0).toUpperCase() + project.slice(1)
+  const title = `${updatedProject} - Karthik Nayak`
   useTitle(title)
 
   const query = `*[slug.current == $slug][0]{
@@ -84,7 +86,7 @@ function ProjectDescription() {
             </a>
           </div>
         </div>
-        <div className='dark:text-light prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400 prose prose-ol:text-gray-600 dark:prose-ol:text-light prose-a:text-darkAccent dark:prose-a:text-accent prose-headings:text-dark dark:prose-headings:text-light prose-strong:text-dark dark:prose-strong:text-light max-w-none text-gray-600'>
+        <div className='dark:text-light prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400 prose prose-ol:text-gray-600 dark:prose-ol:text-light prose-a:text-accent prose-headings:text-dark dark:prose-headings:text-light prose-strong:text-dark dark:prose-strong:text-light max-w-none text-gray-600'>
           <BlockContent
             blocks={projectData.description}
             projectId={client.projectId}

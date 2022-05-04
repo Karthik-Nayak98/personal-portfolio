@@ -16,7 +16,7 @@ function Post() {
   const { slug } = useParams()
   const location = useLocation()
 
-  const title = `${location.state.title} - Karthik Nayak`
+  const title = `${location.state?.title} - Karthik Nayak`
   useTitle(title)
 
   const query = `*[slug.current == $slug][0]{
@@ -45,7 +45,7 @@ function Post() {
       }}
       className='container mx-auto max-w-4xl px-8 md:px-12 lg:px-16'>
       <article className='flex flex-col gap-4 rounded-md md:flex-row md:gap-12'>
-        <div className='flex-1'>
+        <div className=''>
           <h1 className='my-2 text-3xl font-bold md:text-4xl'>{postData.title}</h1>
           <div className='flex flex-col justify-between md:flex-row md:items-center'>
             <span className='my-2 flex items-center gap-2 text-gray-600 dark:text-gray-400'>
@@ -62,7 +62,7 @@ function Post() {
 
             <ViewCounter slug={slug} />
           </div>
-          <div className='dark:text-light prose-blockquote:text-gray-600 dark:prose-blockquote:text-light prose dark:prose-ol:text-light prose-a:text-darkAccent dark:prose-a:text-accent prose-headings:text-dark dark:prose-headings:text-light prose-strong:text-dark dark:prose-strong:text-light max-w-none text-gray-600'>
+          <div className='dark:text-light prose-blockquote:text-gray-600 dark:prose-blockquote:text-light prose dark:prose-ol:text-light prose-a:text-accent dark:prose-a:text-accent prose-headings:text-dark dark:prose-headings:text-light prose-strong:text-dark dark:prose-strong:text-light max-w-3xl text-gray-600'>
             <BlockContent
               blocks={postData.body}
               projectId={client.projectId}

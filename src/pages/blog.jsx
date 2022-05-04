@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import useSanity from '../hooks/useSanity'
 import Container from '../components/container'
 import BlogPost from '../components/blogpost'
@@ -6,7 +6,7 @@ import Loader from '../components/loader'
 import useTitle from '../hooks/useTitle'
 
 const Blog = () => {
-  const query = `*[_type == 'blog']{title, slug, tags, summary}`
+  const query = `*[_type == 'blog']| order(publishedAt desc) {title, slug, tags, summary}`
   const blogData = useSanity(null, query)
 
   const title = 'Blog - Karthik Nayak'

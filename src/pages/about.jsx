@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from 'react'
+import React, { lazy, Suspense } from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 import useSanity from '../hooks/useSanity'
 import { client } from '../utils/client'
@@ -23,7 +23,7 @@ const About = () => {
     <Suspense fallback={<Loader />}>
       <Container title='About me'>
         <section className='text-md mt-4 mb-10 rounded-2xl px-8 text-gray-600 dark:text-gray-400 md:px-12 lg:px-16'>
-          <article className='prose dark:text-light dark:prose-a:text-accent prose-a:text-darkAccent max-w-none leading-7 text-gray-600'>
+          <article className='prose dark:text-light prose-a:text-accent max-w-none leading-7 text-gray-600'>
             <BlockContent
               blocks={userBio.bio}
               projectId={client.projectId}

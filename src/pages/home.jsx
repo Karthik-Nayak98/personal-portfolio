@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { urlFor } from '../utils/client'
 import useSanity from '../hooks/useSanity'
 import Resume from '../assets/Karthik_Nayak_Resume.pdf'
@@ -39,7 +39,7 @@ const Home = () => {
             <span className='text-2xl font-semibold uppercase tracking-wide sm:text-4xl md:tracking-wider lg:text-5xl'>
               {sanityData.name}
             </span>
-            <h2 className='text-darkAccent dark:text-accent text-md py-1 font-medium md:text-xl lg:text-2xl'>
+            <h2 className='text-accent text-md py-1 font-medium md:text-xl lg:text-2xl'>
               {sanityData.title}
             </h2>
           </article>
@@ -48,7 +48,7 @@ const Home = () => {
               whileHover={{ scale: 1.1 }}
               href={Resume}
               target='_blank'
-              className='border-darkAccent dark:border-accent text-darkAccent dark:text-accent self-center rounded-full border-[2px] px-4 py-1 text-center text-xs capitalize tracking-wide sm:text-sm md:border-2 md:px-6 md:py-2 md:tracking-widest lg:w-28'
+              className='border-accent text-accent self-center rounded-full border-[2px] px-4 py-1 text-center text-xs capitalize tracking-wide sm:text-sm md:border-2 md:px-6 md:py-2 md:tracking-widest lg:w-28'
               rel='noopener noreferrer'>
               Resume
             </motion.a>
