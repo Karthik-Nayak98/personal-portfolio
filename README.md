@@ -1,6 +1,6 @@
 # Portfolio
 
-A brief description of what this project does and who it's for
+This is my personal portfolio
 
 ![GitHub deployments](https://img.shields.io/github/deployments/karthik-nayak98/personal-portfolio/production?label=vercel&logo=vercel&logoColor=white)
 [![GitHub license](https://img.shields.io/github/license/Karthik-Nayak98/personal-portfolio)](https://github.com/Karthik-Nayak98/personal-portfolio/blob/main/LICENSE)
@@ -76,7 +76,7 @@ Copyright © 2022 [Karthik Nayak]().<br /> This project is
 [MIT](https://github.com/Karthik-Nayak98/personal-portfolio/blob/main/LICENSE)
 licensed.
 
-## Features to mind
+## Features in mind
 
 - Add minimum time to read the blog post
 - Contact page
