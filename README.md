@@ -80,4 +80,3 @@ licensed.
 
 - Add minimum time to read the blog post
 - Contact page
-- Staggered animation for projects
