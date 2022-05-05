@@ -1,18 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { linkVariant } from '../utils/variants'
 
 function NavItem({ navtext, route }) {
-  const linkVariant = {
-    open: {
-      opacity: 1,
-      y: 0,
-    },
-    close: {
-      y: -10,
-      opacity: 0,
-    },
-  }
   return (
     <motion.li variants={linkVariant}>
       <NavLink

@@ -10,10 +10,14 @@ function BlogPost({ slug, tags, title, summary }) {
 
   useEffect(() => {
     const viewRef = ref(db, `views/${slug}`)
-    onValue(viewRef, (snapshot) => {
+    const unsubscribe = onValue(viewRef, (snapshot) => {
       setViews(snapshot.val())
     })
-  })
+
+    return function cleanup() {
+      unsubscribe()
+    }
+  }, [slug])
 
   return (
     <Link to={`/blog/${slug}`} state={{ title: title }}>

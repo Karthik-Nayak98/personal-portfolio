@@ -2,39 +2,16 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { BiSun, BiMoon } from 'react-icons/bi'
 import useSanity from '../hooks/useSanity'
+import { motion } from 'framer-motion'
+
 import NavItem from './navitem'
 import { ThemeContext } from '../context/theme-context'
 import DarkModeSound from '../assets/dark_mode_sound_on.mp3'
 import LightModeSound from '../assets/light_mode_sound_on.mp3'
-
-import { motion } from 'framer-motion'
+import { navVariants, hamburgerVariant } from '../utils/variants'
 
 function Navbar({ path }) {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false)
-  const navVariants = {
-    open: {
-      transition: {
-        when: 'beforeChildren',
-        staggerChildren: 0.075,
-      },
-      close: {
-        opacity: 0,
-      },
-    },
-  }
-
-  const hamburgerVariant = {
-    open: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.2 },
-    },
-    close: {
-      opacity: 0,
-      x: 10,
-      transition: { duration: 0.2 },
-    },
-  }
 
   useEffect(() => {
     if (window.innerWidth <= 768) setIsNavbarOpen(false)
