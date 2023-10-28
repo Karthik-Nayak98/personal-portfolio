@@ -1,6 +1,7 @@
 import React from 'react';
 import BlogPost from '../components/blogpost';
 import Container from '../components/container';
+import Footer from '../components/footer';
 import Loader from '../components/loader';
 import useSanity from '../hooks/useSanity';
 import useTitle from '../hooks/useTitle';
@@ -28,6 +29,7 @@ const Blog = () => {
           />
         ))}
       </section>
+      <Footer />
     </Container>
   );
 };

@@ -11,6 +11,7 @@ import { client, urlFor } from '../utils/client.js';
 import serializer from '../utils/serializer.js';
 
 import { motion } from 'framer-motion';
+import Footer from '../components/footer.jsx';
 
 function Post() {
   const { slug } = useParams();
@@ -77,6 +78,7 @@ function Post() {
           </div>
         </div>
       </article>
+      <Footer />
     </motion.main>
   );
 }

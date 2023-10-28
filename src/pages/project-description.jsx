@@ -1,23 +1,24 @@
-import React from 'react'
-import { AiOutlineLink, AiOutlineGithub } from 'react-icons/ai'
-import BlockContent from '@sanity/block-content-to-react'
-import serializer from '../utils/serializer.js'
-import { client, urlFor } from '../utils/client'
-import { useParams } from 'react-router-dom'
-import Loader from '../components/loader'
-import { format } from 'date-fns'
-import useSanity from '../hooks/useSanity.js'
-import useTitle from '../hooks/useTitle.js'
+import BlockContent from '@sanity/block-content-to-react';
+import { format } from 'date-fns';
+import React from 'react';
+import { AiOutlineGithub, AiOutlineLink } from 'react-icons/ai';
+import { useParams } from 'react-router-dom';
+import Loader from '../components/loader';
+import useSanity from '../hooks/useSanity.js';
+import useTitle from '../hooks/useTitle.js';
+import { client, urlFor } from '../utils/client';
+import serializer from '../utils/serializer.js';
 
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+import Footer from '../components/footer.jsx';
 
 function ProjectDescription() {
-  const { project } = useParams()
+  const { project } = useParams();
 
   // Capitalize first letter of the project title.
-  const updatedProject = project.charAt(0).toUpperCase() + project.slice(1)
-  const title = `${updatedProject} - Karthik Nayak`
-  useTitle(title)
+  const updatedProject = project.charAt(0).toUpperCase() + project.slice(1);
+  const title = `${updatedProject} - Karthik Nayak`;
+  useTitle(title);
 
   const query = `*[slug.current == $slug][0]{
                   title,
@@ -29,11 +30,11 @@ function ProjectDescription() {
                   description,
                   'name': author->name,
                   'image': author->image,
-                }`
+                }`;
 
-  const projectData = useSanity(null, query, project)
+  const projectData = useSanity(null, query, project);
 
-  if (!projectData) return <Loader />
+  if (!projectData) return <Loader />;
 
   return (
     <motion.section
@@ -52,7 +53,7 @@ function ProjectDescription() {
           alt={projectData.name}
         />
       </figure>
-      <h2 className='dark:text-light text-dark my-4 text-4xl font-semibold'>
+      <h2 className='my-4 text-4xl font-semibold text-dark dark:text-light'>
         {projectData.title}
       </h2>
       <article>
@@ -86,7 +87,7 @@ function ProjectDescription() {
             </a>
           </div>
         </div>
-        <div className='dark:text-light prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400 prose prose-ol:text-gray-600 dark:prose-ol:text-light prose-a:text-accent prose-headings:text-dark dark:prose-headings:text-light prose-strong:text-dark dark:prose-strong:text-light max-w-none text-gray-600'>
+        <div className='prose max-w-none text-gray-600 prose-headings:text-dark prose-a:text-accent prose-blockquote:text-gray-600 prose-strong:text-dark prose-ol:text-gray-600 dark:text-light dark:prose-headings:text-light dark:prose-blockquote:text-gray-400 dark:prose-strong:text-light dark:prose-ol:text-light'>
           <BlockContent
             blocks={projectData.description}
             projectId={client.projectId}
@@ -95,8 +96,9 @@ function ProjectDescription() {
           />
         </div>
       </article>
+      <Footer />
     </motion.section>
-  )
+  );
 }
 
-export default ProjectDescription
+export default ProjectDescription;
