@@ -1,35 +1,17 @@
-import React from 'react'
-import { urlFor } from '../utils/client'
-import useSanity from '../hooks/useSanity'
+import React from 'react';
 
 const Footer = () => {
-  const sanityData = useSanity(null, 'social')
+  const currentDate = new Date();
 
   return (
-    <footer className='min-w-screen bg-dark'>
+    <footer className='bottom-0'>
       <div className='container mx-auto flex flex-col items-center justify-center'>
-        <ul className='mt-3 flex items-center justify-around'>
-          {sanityData &&
-            sanityData.map((item) => (
-              <span key={item.name} className='bg-light mx-2 rounded'>
-                <a href={item.social_url} target='_blank' rel='noreferrer'>
-                  <li className='inline-flex p-1'>
-                    <img
-                      src={urlFor(item.image)}
-                      alt={item.name}
-                      className='h-6 w-6'
-                    />
-                  </li>
-                </a>
-              </span>
-            ))}
-        </ul>
-        <span className='text-light my-2 text-sm'>
-          Copyright © 2022 • Karthik ☄️
+        <span className='text-sm text-gray-600 dark:text-gray-400'>
+          Made with ❤️ by Karthik Nayak © {currentDate.getFullYear()}
         </span>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
