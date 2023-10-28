@@ -1,59 +1,61 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { BiSun, BiMoon } from 'react-icons/bi'
-import useSanity from '../hooks/useSanity'
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+import React, { useContext, useEffect, useState } from 'react';
+import { BiMoon, BiSun } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
+import useSound from 'use-sound';
+import useSanity from '../hooks/useSanity';
 
-import NavItem from './navitem'
-import { ThemeContext } from '../context/theme-context'
-import DarkModeSound from '../assets/dark_mode_sound_on.mp3'
-import LightModeSound from '../assets/light_mode_sound_on.mp3'
-import { navVariants, hamburgerVariant } from '../utils/variants'
+import darkModeSound from '../assets/dark_mode_sound.mp3';
+import lightModeSound from '../assets/light_mode_sound.mp3';
+import { ThemeContext } from '../context/theme-context';
+import { hamburgerVariant, navVariants } from '../utils/variants';
+import NavItem from './navitem';
 
 function Navbar({ path }) {
-  const [isNavbarOpen, setIsNavbarOpen] = useState(false)
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
+  const [darkModePlay] = useSound(darkModeSound);
+  const [lightModePlay] = useSound(lightModeSound);
 
   useEffect(() => {
-    if (window.innerWidth <= 768) setIsNavbarOpen(false)
-  }, [path])
+    if (window.innerWidth <= 768) setIsNavbarOpen(false);
+  }, [path]);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) setIsNavbarOpen(true)
-      else setIsNavbarOpen(false)
-    }
-    handleResize()
-    window.addEventListener('resize', handleResize)
+      if (window.innerWidth > 768) setIsNavbarOpen(true);
+      else setIsNavbarOpen(false);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const navItems = [
     { name: 'home', route: '/' },
     { name: 'blog', route: '/blog' },
     { name: 'work', route: '/work' },
     { name: 'about', route: '/about' },
-  ]
-  const { theme, setTheme } = useContext(ThemeContext)
+  ];
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const toggleTheme = () => {
     if (theme === 'dark') {
-      const audio = new Audio(DarkModeSound)
-      audio.play()
-      setTheme('light')
+      darkModePlay();
+      setTheme('light');
     } else {
-      const audio = new Audio(LightModeSound)
-      audio.play()
-      setTheme('dark')
+      lightModePlay();
+      setTheme('dark');
     }
-  }
+  };
 
-  const query = `*[_type == "author"]{image{ asset->{ url, _id,}}}`
-  const authorImage = useSanity(null, query)
+  const query = `*[_type == "author"]{image{ asset->{ url, _id,}}}`;
+  const authorImage = useSanity(null, query);
 
   return (
-    <header className='dark:bg-dark container sticky top-0 z-20 mx-auto flex w-full max-w-4xl items-center justify-between bg-gray-200 px-8 py-6 md:px-12 lg:px-16'>
+    <header className='container sticky top-0 z-20 mx-auto flex w-full max-w-4xl items-center justify-between bg-gray-200 px-8 py-6 dark:bg-dark md:px-12 lg:px-16'>
       <Link to='/'>
         <img
           className='h-12 w-12 rounded-full object-cover'
@@ -64,7 +66,7 @@ function Navbar({ path }) {
 
       <div
         onClick={toggleTheme}
-        className='ml-auto mr-1 cursor-pointer rounded bg-gray-200 p-2 dark:bg-white dark:bg-opacity-10 md:hidden'>
+        className='ml-auto mr-1 cursor-pointer rounded bg-gray-200 p-2 dark:bg-white dark:bg-opacity-10 dark:hover:border-stone-200 md:hidden'>
         <BiMoon className={`${theme === 'dark' ? 'hidden' : 'block'}`} size={20} />
         <BiSun className={`${theme === 'light' ? 'hidden' : 'block'}`} size={20} />
       </div>
@@ -115,7 +117,7 @@ function Navbar({ path }) {
           initial={false}
           animate={isNavbarOpen ? 'open' : 'close'}
           variants={navVariants}
-          className={`dark:bg-dark fixed top-20 left-0 right-0 transform items-center gap-14 space-y-2 bg-gray-200 px-6 pb-4 ${
+          className={`fixed top-20 left-0 right-0 transform items-center gap-14 space-y-2 bg-gray-200 px-6 pb-4  dark:bg-dark ${
             isNavbarOpen ? 'block' : 'hidden'
           } md:relative md:top-0 md:flex md:gap-0 md:space-y-0 md:px-0 md:pb-0`}>
           {navItems.map((item) => (
@@ -125,18 +127,22 @@ function Navbar({ path }) {
             onClick={toggleTheme}
             className='ml-2 hidden cursor-pointer rounded-md bg-gray-500 bg-opacity-10 p-2 dark:bg-white dark:bg-opacity-10 md:block'>
             <BiMoon
-              className={`${theme === 'dark' ? 'hidden' : 'block'}`}
+              className={`hover:animate-spin ${
+                theme === 'dark' ? 'hidden' : 'block'
+              }`}
               size={20}
             />
             <BiSun
-              className={`${theme === 'light' ? 'hidden' : 'block'}`}
+              className={`hover:animate-spin ${
+                theme === 'light' ? 'hidden' : 'block'
+              }`}
               size={20}
             />
           </li>
         </motion.ul>
       </nav>
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
