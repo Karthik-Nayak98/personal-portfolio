@@ -1,12 +1,12 @@
+import { motion } from 'framer-motion'
 import React from 'react'
-import { urlFor } from '../utils/client'
-import useSanity from '../hooks/useSanity'
 import Resume from '../assets/Karthik_Nayak_Resume.pdf'
 import Loader from '../components/loader'
 import SocialIcon from '../components/social-icon'
+import useSanity from '../hooks/useSanity'
 import useTitle from '../hooks/useTitle'
+import { urlFor } from '../utils/client'
 
-import { motion } from 'framer-motion'
 
 const Home = () => {
   const query1 = '*[_type == "author"][0]{name, title, image {asset ->{url}}}'

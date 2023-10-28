@@ -1,10 +1,10 @@
-import React from 'react'
-import Container from '../components/container'
-import Loader from '../components/loader'
-import Project from '../components/project'
-import useTitle from '../hooks/useTitle'
-import useSanity from '../hooks/useSanity'
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+import React from 'react';
+import Container from '../components/container';
+import Loader from '../components/loader';
+import Project from '../components/project';
+import useSanity from '../hooks/useSanity';
+import useTitle from '../hooks/useTitle';
 
 const Work = () => {
   const projectVariant = {
@@ -15,14 +15,14 @@ const Work = () => {
       opacity: 1,
       transition: { staggerChildren: 0.3 },
     },
-  }
-  const query = '*[_type == "project"]{title,slug,summary,banner{asset->{ url }}}'
-  const projects = useSanity(null, query)
+  };
+  const query = '*[_type == "project"]{title,slug,summary,banner{asset->{ url }}}';
+  const projects = useSanity(null, query);
 
-  const title = 'Projects - Karthik Nayak'
-  useTitle(title)
+  const title = 'Projects - Karthik Nayak';
+  useTitle(title);
 
-  if (!projects) return <Loader />
+  if (!projects) return <Loader />;
 
   return (
     <Container title='Projects'>
@@ -42,7 +42,7 @@ const Work = () => {
         ))}
       </motion.section>
     </Container>
-  )
-}
+  );
+};
 
-export default Work
+export default Work;

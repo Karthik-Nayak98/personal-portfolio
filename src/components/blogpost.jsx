@@ -1,23 +1,23 @@
-import { onValue, ref } from 'firebase/database'
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { db } from '../firebase/firebase-config'
-import Tag from './tag'
-import { AiOutlineEye } from 'react-icons/ai'
+import { onValue, ref } from 'firebase/database';
+import React, { useEffect, useState } from 'react';
+import { AiOutlineEye } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
+import { db } from '../firebase/firebase-config';
+import Tag from './tag';
 
 function BlogPost({ slug, tags, title, summary }) {
-  const [views, setViews] = useState(0)
+  const [views, setViews] = useState(0);
 
   useEffect(() => {
-    const viewRef = ref(db, `views/${slug}`)
+    const viewRef = ref(db, `views/${slug}`);
     const unsubscribe = onValue(viewRef, (snapshot) => {
-      setViews(snapshot.val())
-    })
+      setViews(snapshot.val());
+    });
 
     return function cleanup() {
-      unsubscribe()
-    }
-  }, [slug])
+      unsubscribe();
+    };
+  }, [slug]);
 
   return (
     <Link to={`/blog/${slug}`} state={{ title: title }}>
@@ -41,7 +41,7 @@ function BlogPost({ slug, tags, title, summary }) {
         </div>
       </article>
     </Link>
-  )
+  );
 }
 
-export default BlogPost
+export default BlogPost;

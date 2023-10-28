@@ -1,18 +1,19 @@
-import React from 'react'
-import useSanity from '../hooks/useSanity'
-import Container from '../components/container'
-import BlogPost from '../components/blogpost'
-import Loader from '../components/loader'
-import useTitle from '../hooks/useTitle'
+import React from 'react';
+import BlogPost from '../components/blogpost';
+import Container from '../components/container';
+import Loader from '../components/loader';
+import useSanity from '../hooks/useSanity';
+import useTitle from '../hooks/useTitle';
 
 const Blog = () => {
-  const query = `*[_type == 'blog']| order(publishedAt desc) {title, slug, tags, summary}`
-  const blogData = useSanity(null, query)
+  const query = `*[_type == 'blog']| order(publishedAt desc) {title, slug, tags, summary}`;
+  const blogData = useSanity(null, query);
 
-  const title = 'Blog - Karthik Nayak'
-  useTitle(title)
+  const title = 'Blog - Karthik Nayak';
+  const description = 'This page lists out all the blogposts written by me.';
+  useTitle(title, description);
 
-  if (!blogData) return <Loader />
+  if (!blogData) return <Loader />;
 
   return (
     <Container title='Blogs'>
@@ -28,7 +29,7 @@ const Blog = () => {
         ))}
       </section>
     </Container>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

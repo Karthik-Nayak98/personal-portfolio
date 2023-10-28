@@ -1,23 +1,23 @@
-import React from 'react'
-import { useLocation, useParams } from 'react-router-dom'
-import { client, urlFor } from '../utils/client.js'
-import { format } from 'date-fns'
-import BlockContent from '@sanity/block-content-to-react'
-import serializer from '../utils/serializer.js'
-import ViewCounter from '../components/viewcounter.jsx'
-import Tag from '../components/tag.jsx'
-import Loader from '../components/loader.jsx'
-import useSanity from '../hooks/useSanity.js'
-import useTitle from '../hooks/useTitle.js'
+import BlockContent from '@sanity/block-content-to-react';
+import { format } from 'date-fns';
+import React from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import Loader from '../components/loader.jsx';
+import Tag from '../components/tag.jsx';
+import ViewCounter from '../components/viewcounter.jsx';
+import useSanity from '../hooks/useSanity.js';
+import useTitle from '../hooks/useTitle.js';
+import { client, urlFor } from '../utils/client.js';
+import serializer from '../utils/serializer.js';
 
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 function Post() {
-  const { slug } = useParams()
-  const location = useLocation()
+  const { slug } = useParams();
+  const location = useLocation();
 
-  const title = `${location.state?.title} - Karthik Nayak`
-  useTitle(title)
+  const title = `${location.state?.title} - Karthik Nayak`;
+  useTitle(title);
 
   const query = `*[slug.current == $slug][0]{
                     title,
@@ -28,11 +28,11 @@ function Post() {
                     body,
                     'name': author->name,
                     'image': author->image,
-                }`
+                }`;
 
-  const postData = useSanity(null, query, slug)
+  const postData = useSanity(null, query, slug);
 
-  if (!postData) return <Loader />
+  if (!postData) return <Loader />;
 
   return (
     <motion.main
@@ -62,7 +62,7 @@ function Post() {
 
             <ViewCounter slug={slug} />
           </div>
-          <div className='dark:text-light prose-blockquote:text-gray-600 dark:prose-blockquote:text-light prose dark:prose-ol:text-light prose-a:text-accent dark:prose-a:text-accent prose-headings:text-dark dark:prose-headings:text-light prose-strong:text-dark dark:prose-strong:text-light max-w-3xl text-gray-600'>
+          <div className='prose max-w-3xl text-gray-600 prose-headings:text-dark prose-a:text-accent prose-blockquote:text-gray-600 prose-strong:text-dark dark:text-light dark:prose-headings:text-light dark:prose-a:text-accent dark:prose-blockquote:text-light dark:prose-strong:text-light dark:prose-ol:text-light'>
             <BlockContent
               blocks={postData.body}
               projectId={client.projectId}
@@ -78,7 +78,7 @@ function Post() {
         </div>
       </article>
     </motion.main>
-  )
+  );
 }
 
-export default Post
+export default Post;
